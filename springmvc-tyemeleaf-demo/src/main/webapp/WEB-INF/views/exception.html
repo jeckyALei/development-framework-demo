@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<script th:include="common :: common-header" th:remove="tag"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title th:text="#{index_title}"></title>
+<div th:remove="all">
+	<link utils:merger="commoncss"
+		th:href="@{/resources/css/bootstrap.css}"
+		href="../../../resources/css/bootstrap.css" rel="stylesheet"></link>
+	<link utils:merger="commoncss" th:href="@{/resources/css/main.css}"
+		href="../../../resources/css/main.css" rel="stylesheet"></link>
+	<link utils:merger="commoncss"
+		th:href="@{/resources/dhtmlx/dhtmlx.css}"
+		href="../../../resources/dhtmlx/dhtmlx.css" rel="stylesheet"></link>
+	<script>
+		var ctx = /*[[${#ctx.contextPath}]]*/"/edg-server";
+	</script>
+	<script utils:merger="commonjs" th:src="@{/resources/dhtmlx/dhtmlx.js}"
+		src="../../../resources/dhtmlx/dhtmlx.js" type="text/javascript"></script>
+
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/backbone.js}"
+		src="../../../resources/js/framework/backbone.js"
+		type="text/javascript"></script>
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/underscore.js}"
+		src="../../../resources/js/framework/underscore.js"
+		type="text/javascript"></script>
+
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/jquery-1.9.1.js}"
+		src="../../../resources/js/framework/jquery-1.9.1.js"
+		type="text/javascript"></script>
+
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/jquery.jqpagination.js}"
+		type="text/javascript"
+		src="../../../resources/js/framework/jquery.jqpagination.js"></script>
+
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/jquery.form.js}"
+		src="../../../resources/js/framework/jquery.form.js"
+		type="text/javascript"></script>
+
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/framework/jquery.validate.js}"
+		src="../../../resources/js/framework/jquery.validate.js"
+		type="text/javascript"></script>
+	<!-- js i18n -->
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/i18n/messages_}+${#locale}+'.js'"
+		src="../../../resources/js/i18n/messages_zh_CN.js"
+		type="text/javascript"></script>
+	<!-- jquery validation i18n -->
+	<script utils:merger="commonjs"
+		th:src="@{/resources/js/i18n/validation_messages_}+${#locale}+'.js'"
+		type="text/javascript"
+		src="../../../resources/js/i18n/validation_messages_zh_CN.js"></script>
+</div>
+</head>
+<body>
+	<div id="wrap">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="#">ES Infinspan Console</a>
+					<div class="nav-collapse collapse">
+						<p class="navbar-text pull-right">Welcome Admin</p>
+						<!-- 
+					<ul class="nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul> -->
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</div>
+
+		</div>
+		<div class="container">
+			<div class="container-fluid">
+					<div class="span10 bs-docs-div" style="width: 92%;">
+					<center><h3 style="">Exception Info in the following</h3></center>
+						<dir id="exception_id">
+							<!--exception-->
+						</dir>
+					</div>
+			</div>
+			<!--/.fluid-container-->
+		</div>
+		<div id="push"></div>
+	</div>
+	<div id="footer">
+		<div style="text-align: center; padding-top: 20px;">&copy;
+			MWH 2013</div>
+	</div>
+	<script th:inline="javascript">
+/*<![CDATA[*/
+var exception_message = /*[[${exception}]]*/""; 
+/*]]>*/
+</script>
+	<script utils:merger="commonjs"
+		th:src="${#httpServletRequest.contextPath}+'/resources/js/framework/bootstrap.js'"
+		src="../../resources/js/framework/bootstrap.js" type="text/javascript"></script>
+	<script utils:merger="commonjs"
+		th:src="${#httpServletRequest.contextPath}+'/resources/js/exception/exception.js'"
+		src="../../resources/js/exception/exception.js" type="text/javascript"></script>
+</body>
+</html>
+

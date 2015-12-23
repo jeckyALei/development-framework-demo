@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:6.0 http://www.infinispan.org/schemas/infinispan-config-6.0.xsd"
+	xmlns="urn:infinispan:config:6.0">
+
+	<global>
+		<globalJmxStatistics enabled="true" />
+		<transport clusterName="test-cluster"  nodeName="testNode">
+			<properties>
+				<property name="configurationFile" value="jgroups-tcp.xml" />
+			</properties>
+		</transport>
+	</global>
+   
+	<default>
+		<jmxStatistics enabled="true" />
+		<clustering mode="distribution">
+			<l1 enabled="false" />
+			<hash numOwners="2" numSegments="80" />
+			<sync replTimeout="800" />
+			<stateTransfer chunkSize="2000" timeout="10000" />
+		</clustering>
+		<expiration wakeUpInterval="300000" lifespan="-1" maxIdle="-1"
+			reaperEnabled="true"></expiration>
+		<locking concurrencyLevel="1000" isolationLevel="READ_COMMITTED"
+			lockAcquisitionTimeout="700" useLockStriping="false"
+			supportsConcurrentUpdates="true"></locking>
+		<transaction transactionMode="NON_TRANSACTIONAL"></transaction>
+	</default>
+	<namedCache name="test">
+		<jmxStatistics enabled="true" />
+		<clustering mode="distribution">
+			<l1 enabled="false" />
+			<hash numOwners="2" numSegments="120" />
+			<sync replTimeout="800" />
+			<stateTransfer chunkSize="2000" timeout="10000" />
+		</clustering>
+		<dataContainer
+			keyEquivalence="org.infinispan.commons.equivalence.ByteArrayEquivalence"
+			valueEquivalence="org.infinispan.commons.equivalence.ByteArrayEquivalence"></dataContainer>
+		<!--在明确put，remove时不需要返回值的情况下，禁止put和remove操作 发送远程检索请求，提高性能 -->
+		<!-- <unsafe unreliableReturnValues="true"/> -->
+		<expiration wakeUpInterval="300000" lifespan="-1" maxIdle="-1"
+			reaperEnabled="true"></expiration>
+		<locking concurrencyLevel="1000" isolationLevel="READ_COMMITTED"
+			lockAcquisitionTimeout="700" useLockStriping="false"
+			supportsConcurrentUpdates="true"></locking>
+		<transaction transactionMode="NON_TRANSACTIONAL"></transaction>
+		<customInterceptors>
+			<interceptor index="1"
+				class="com.embracesource.infinispan.interceptor.PutReturnWhenLockInterceptor"></interceptor>
+			<interceptor index="2"
+				class="com.embracesource.infinispan.interceptor.DeadLockDetectInterceptor"></interceptor>
+		</customInterceptors>
+	</namedCache>
+
+</infinispan>

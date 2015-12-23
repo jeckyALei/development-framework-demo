@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:6.0 http://www.infinispan.org/schemas/infinispan-config-6.0.xsd"
+	xmlns="urn:infinispan:config:6.0">
+
+	<global>
+		<globalJmxStatistics enabled="true" />
+		<transport clusterName="${infinispan.clusterName}"
+			machineId="${infinispan.machineId}" rackId="${infinispan.rackId}"
+			siteId="${infinispan.siteId}" nodeName="${infinispan.nodeName}">
+			<properties>
+				<property name="configurationFile" value="jgroups-tcp-test.xml" />
+			</properties>
+		</transport>
+	</global>
+
+	<default>
+		<jmxStatistics enabled="true" />
+		<clustering mode="distribution">
+			<l1 enabled="false" />
+			<hash numOwners="2" numSegments="80" />
+			<sync replTimeout="800" />
+			<stateTransfer chunkSize="2000" timeout="10000" />
+		</clustering>
+		<dataContainer
+			keyEquivalence="org.infinispan.commons.equivalence.ByteArrayEquivalence"></dataContainer>
+		<expiration wakeUpInterval="300000" lifespan="-1" maxIdle="-1"
+			reaperEnabled="true"></expiration>
+		<locking concurrencyLevel="700" isolationLevel="READ_COMMITTED"
+			lockAcquisitionTimeout="800" useLockStriping="false"
+			supportsConcurrentUpdates="true"></locking>
+		<transaction transactionMode="NON_TRANSACTIONAL"></transaction>
+	</default>
+	
+	<namedCache name="es-session">
+		<jmxStatistics enabled="true" />
+		<clustering mode="distribution">
+			<l1 enabled="false" />
+			<hash numOwners="2" numSegments="80" />
+			<sync replTimeout="800" />
+			<stateTransfer chunkSize="2000" timeout="10000" />
+		</clustering>
+		<dataContainer
+			keyEquivalence="org.infinispan.commons.equivalence.ByteArrayEquivalence"></dataContainer>
+		<expiration wakeUpInterval="300000" lifespan="-1" maxIdle="-1"
+			reaperEnabled="true"></expiration>
+		<locking concurrencyLevel="700" isolationLevel="READ_COMMITTED"
+			lockAcquisitionTimeout="800" useLockStriping="false"
+			supportsConcurrentUpdates="true"></locking>
+		<transaction transactionMode="NON_TRANSACTIONAL"></transaction>
+		<customInterceptors>
+			<interceptor index="0"
+				class="com.embracesource.infinispan.interceptor.SessionSharingGetKeyInterceptor"></interceptor>
+			<interceptor index="1"
+				class="com.embracesource.infinispan.interceptor.DeadLockDetectInterceptor"></interceptor>
+			<interceptor after="org.infinispan.interceptors.EntryWrappingInterceptor"
+				class="com.embracesource.infinispan.interceptor.SessionSharingPutKeyInterceptor"></interceptor>
+		</customInterceptors>
+	</namedCache>
+</infinispan>

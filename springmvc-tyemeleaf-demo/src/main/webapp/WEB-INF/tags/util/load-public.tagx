@@ -1,0 +1,71 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+
+	<jsp:output omit-xml-declaration="yes" />
+
+
+	<spring:url value="/js/dhtmlx/dhtmlx.css" var="dhtmlxCss" />
+	<spring:url value="/js/dhtmlx/dhtmlx.js" var="dhtmlxJs" />
+
+	<spring:url value="/js/dhtmlx/dhtmlxcalendar_zh.js" var="dhtmlxcalendar_zh" />
+
+
+	<spring:url value="/js/jquery/jquery-1.7.1.js" var="jquery" />
+	<spring:url value="/js/jquery/jquery.form.js" var="jqueryForm" />
+	<spring:url value="/js/jquery/json.min.js" var="_json" />
+
+	<spring:url value="/images/favicon.ico" var="favicon" />
+	<spring:url value="/js/dhtmlx/imgs/" var="dhxImagePath" />
+	<spring:url value="/images/icon/" var="toolBarImagePath" />
+	
+	<spring:url value="/" var="webroot" />
+
+	<link rel="stylesheet" type="text/css" href="${dhtmlxCss}"/>
+	
+	<link rel="SHORTCUT ICON" href="${favicon}"/>
+	<!-- Get the user local from the page context (it was set by Spring MVC's locale resolver) -->
+	<c:set var="userLocale" scope="request">
+		<c:out value="${pageContext.response.locale}" default="zh_CN" />
+	</c:set>
+
+   <!--  <spring:url value="/js/message/message_${userLocale}.js" var="message_path" />
+	<script src="${message_path}" type="text/javascript">
+	 required for FF3 and Opera 
+	</script>-->
+
+	<script src="${dhtmlxJs}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+	<script src="${dhtmlxcalendar_zh}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+
+	<script src="${jquery}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+	<script src="${_json}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+	<script src="${jqueryForm}" type="text/javascript">
+	<!-- required for FF3 and Opera -->
+		
+	</script>
+
+	<spring:url value="/css/main.css" var="main_css" />
+
+	<link rel="stylesheet" type="text/css" href="${main_css}"/>
+	
+	<script type="text/javascript">		
+		var dhxSkin = "dhx_skyblue";
+		var webroot = "${webroot}";
+		var dhxImagePath = "${dhxImagePath}";
+		var toolBarImagePath = "${toolBarImagePath}";
+		window.dhx_globalImgPath = dhxImagePath;
+		dhtmlx.skin = dhxSkin;
+	</script>
+	
+</jsp:root>
