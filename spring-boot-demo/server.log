@@ -1,0 +1,46 @@
+14:34:09.694 [main] ERROR o.s.b.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: class path resource [ceph.properties] cannot be opened because it does not exist
+	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:89) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:265) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:162) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:606) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:462) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118) ~[spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:686) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:320) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:957) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:946) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at com.mwh.springboot.boot.Application.main(Application.java:16) [classes/:na]
+Caused by: java.io.FileNotFoundException: class path resource [ceph.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:143) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:98) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:175) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.core.io.support.PropertiesLoaderSupport.mergeProperties(PropertiesLoaderSupport.java:156) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:80) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	... 10 common frames omitted
+14:34:36.479 [main] ERROR o.s.b.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Invalid bean definition with name 'dataSource' defined in file [/home/alei/Desktop/my-git-repo/development-framework-demo/spring-boot-demo/target/classes/spring/applicationContext-dao.xml]: Could not resolve placeholder 'db.driver' in string value "${db.driver}"; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'db.driver' in string value "${db.driver}"
+	at org.springframework.beans.factory.config.PlaceholderConfigurerSupport.doProcessProperties(PlaceholderConfigurerSupport.java:211) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.processProperties(PropertyPlaceholderConfigurer.java:223) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:86) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:265) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:162) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:606) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:462) ~[spring-context-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:118) ~[spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:686) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:320) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:957) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:946) [spring-boot-1.2.2.RELEASE.jar:1.2.2.RELEASE]
+	at com.mwh.springboot.boot.Application.main(Application.java:16) [classes/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'db.driver' in string value "${db.driver}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:174) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.PropertyPlaceholderConfigurer$PlaceholderResolvingStringValueResolver.resolveStringValue(PropertyPlaceholderConfigurer.java:259) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.BeanDefinitionVisitor.resolveStringValue(BeanDefinitionVisitor.java:282) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.BeanDefinitionVisitor.resolveValue(BeanDefinitionVisitor.java:204) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.BeanDefinitionVisitor.visitPropertyValues(BeanDefinitionVisitor.java:141) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.BeanDefinitionVisitor.visitBeanDefinition(BeanDefinitionVisitor.java:82) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	at org.springframework.beans.factory.config.PlaceholderConfigurerSupport.doProcessProperties(PlaceholderConfigurerSupport.java:208) ~[spring-beans-4.1.5.RELEASE.jar:4.1.5.RELEASE]
+	... 12 common frames omitted

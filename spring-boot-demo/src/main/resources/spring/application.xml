@@ -14,7 +14,6 @@
 			<list>
 				<value>classpath:config.properties</value>
 				<value>classpath:application.properties</value>
-				<value>classpath:ceph.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -22,5 +21,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
 	</bean>
-	<import resource="classpath:spring/applicationContext-*.xml" />
+	<import resource="classpath:spring/applicationContext-dao.xml" />
+	<import resource="classpath:spring/applicationContext-service.xml" />
+	<import resource="classpath:spring/applicationContext-schedule.xml" />
 </beans>

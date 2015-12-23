@@ -19,7 +19,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
 	default-lazy-init="false">
 	
-	<jpa:repositories base-package="com.embracesource.wft" />
+	<jpa:repositories base-package="com.mwh.springboot" />
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" id="dataSource">
 		<property name="driverClassName" value="${db.driver}" />
