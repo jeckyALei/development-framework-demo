@@ -7,13 +7,13 @@
 	<version>0.0.1</version>
 	<name>spring-boot-demo</name>
 	<packaging>jar</packaging>
-	
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.2.RELEASE</version>
 	</parent>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.6.2</slf4j.version>
@@ -31,7 +31,7 @@
 		<httpclient.version>4.5.1</httpclient.version>
 		<jackson.version>2.5.1</jackson.version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- amazonaws -->
 		<dependency>
@@ -73,11 +73,11 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons-fileupload.version}</version>
 		</dependency>
-		 <dependency>
+	<!-- 	<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
 			<version>${netty.version}</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.resthub</groupId>
 			<artifactId>hessian</artifactId>
@@ -107,23 +107,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.tomcat</groupId>
-					<artifactId>tomcat-jdbc</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-jpa</artifactId> 
+			<exclusions> <exclusion> <groupId>org.apache.tomcat</groupId> <artifactId>tomcat-jdbc</artifactId> 
+			</exclusion> </exclusions> </dependency> -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -187,7 +180,7 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			 <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
@@ -205,7 +198,7 @@
 					</execution>
 				</executions>
 			</plugin>
-            <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<executions>
@@ -226,21 +219,22 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin>
+			<!-- 添加以下组件 ，整个项目中仅能存在一个公共main函数-->
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-				    <mainClass>com.embracesource.wft.boot.Application</mainClass>
-				</configuration>
-				<dependencies>
-					spring热部署
-					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>springloaded</artifactId>
-						<version>1.2.1.RELEASE</version>
-					</dependency>
-				</dependencies>
-			</plugin> -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- <configuration> <mainClass>com.embracesource.wft.boot.Application</mainClass> 
+					</configuration> <dependencies> spring热部署 <dependency> <groupId>org.springframework</groupId> 
+					<artifactId>springloaded</artifactId> <version>1.2.1.RELEASE</version> </dependency> 
+					</dependencies> -->
+			</plugin>
 		</plugins>
 	</build>
 </project>

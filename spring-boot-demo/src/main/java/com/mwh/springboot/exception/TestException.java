@@ -4,18 +4,18 @@ package com.mwh.springboot.exception;
  * @author alei
  *
  */
-public class TransferCanRetryException extends Exception {
+public class TestException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public TransferCanRetryException(Throwable cause) {
+	public TestException(Throwable cause) {
 		super(cause);
 	}
 
-	public TransferCanRetryException(String message, Throwable cause) {
+	public TestException(String message, Throwable cause) {
 		super(message, cause);
 	}
 }

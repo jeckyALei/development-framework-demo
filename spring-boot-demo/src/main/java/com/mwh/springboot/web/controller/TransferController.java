@@ -1,4 +1,4 @@
-package com.mwh.springboot.controller;
+package com.mwh.springboot.web.controller;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -25,11 +25,10 @@ public class TransferController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/helloworld", method = RequestMethod.POST, produces = "application/octet-stream")
+	@RequestMapping(value = "/helloworld", method = RequestMethod.GET)
 	@ResponseBody
-	public byte[] doLoadData(HttpServletResponse response, @RequestBody byte[] requestData) throws Exception {
-		String result = "helloworld";
-		return TypeConvertUtil.objectToBytes(result.getBytes());
+	public String helloworld(HttpServletResponse response, @RequestBody String requestData) throws Exception {
+		return requestData;
 	}
 
 }

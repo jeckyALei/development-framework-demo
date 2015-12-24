@@ -30,15 +30,6 @@ public class PropertiesUtil {
 	private static final Logger logger = Logger.getLogger(PropertiesUtil.class);
 	public static String configFilePath = "config.properties";
 	
-	public static void main(String[] args) {
-		try {
-			loadProperties();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
 	/**
 	 * 根据指定属性名，获取属性值
 	 * @param constName

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GBK"?>
+<!-- <?xml version="1.0" encoding="GBK"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
@@ -68,7 +68,7 @@
 		
 		<property name="packagesToScan">
 			<list> 
-       			 <value>com.embracesource.wft.*.entity</value>
+       			 <value>com.mwh.springboot.entity</value>
     		</list>	
 		</property>
 		<property name="jpaPropertyMap" ref="jpaPropertyMap" />
@@ -103,8 +103,9 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="txPointcut" expression="execution(* com.embracesource.wft.*.service.impl.*.*(..))" />
+		<aop:pointcut id="txPointcut" expression="execution(* com.mwh.springboot.*.service.impl.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
 
 </beans>
+ -->
